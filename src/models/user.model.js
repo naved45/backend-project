@@ -45,7 +45,7 @@ userSchema.pre("save", async function (next) {
   return;
 });
 
-userSchema.methods.comaprePassword = async function (password) {
+userSchema.methods.comrePassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 

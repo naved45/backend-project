@@ -1,4 +1,4 @@
-const transactionModel = require("../models/transaction.mmodel");
+const transactionModel = require("../models/transaction.model");
 const ledgerModel = require("../models/ledger.model");
 const accountModel = require("../models/account.model");
 const emailService = require("../services/email.service");
@@ -41,6 +41,40 @@ async function createTransaction(req, res) {
     return res.status(400).json({
       message: "Invalid fromAccount or toAccount",
     });
+  }
+
+  /**
+   * 2. Validate idempotency key
+   */
+
+  const isTransactionAlreadyExsits = await transactionModel.findOne({
+    idempotencyKey: idempotencyKey,
+  });
+
+  if (isTransactionAlreadyExsits) {
+    if (isTransactionAlreadyExsits.status === "COMPLETED") {
+      res.status(200).json({
+        message: "Transaction already processed",
+        transaction: isTransactionAlreadyExsits,
+      });
+    }
+
+    if (isTransactionAlreadyExsits.status === "PENDING") {
+      res.status(200).json({
+        message: "Transaction is still processing",
+      });
+    }
+    if (isTransactionAlreadyExsits.status === "FAILED") {
+      res.status(500).json({
+        message: "Transaction processing failed previously please try",
+      });
+    }
+
+    if (isTransactionAlreadyExsits.status === "REVERSED") {
+      res.status(500).json({
+        message: "Transaction was reversed please try",
+      });
+    }
   }
 }
 
