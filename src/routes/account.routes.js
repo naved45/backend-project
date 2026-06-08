@@ -62,12 +62,11 @@ router.put(
   accountController.updateAccountController,
 );
 
-//commenting this part because i have not commit anything today so after the day you can uncommnent this part
-/*
+
 router.delete(
   "/:id",
   authMiddleware.authMiddleware,
   accountController.deleteAccountController,
 );
-*/
+
 module.exports = router;
