@@ -56,7 +56,9 @@ router.get(
   accountController.getSingleAccountController,
 );
 
-router.put(
+//commenting this part you xan uncommnet this next time
+
+/*router.put(
   "/:id",
   authMiddleware.authMiddleware,
   accountController.updateAccountController,
@@ -68,5 +70,6 @@ router.delete(
   authMiddleware.authMiddleware,
   accountController.deleteAccountController,
 );
+*/
 
 module.exports = router;
