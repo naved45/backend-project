@@ -58,18 +58,16 @@ router.get(
 
 //commenting this part you xan uncommnet this next time
 
-/*router.put(
+router.put(
   "/:id",
   authMiddleware.authMiddleware,
   accountController.updateAccountController,
 );
-
 
 router.delete(
   "/:id",
   authMiddleware.authMiddleware,
   accountController.deleteAccountController,
 );
-*/
 
 module.exports = router;
