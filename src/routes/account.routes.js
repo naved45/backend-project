@@ -58,6 +58,7 @@ router.get(
 
 //commenting this part you xan uncommnet this next time
 
+/*
 router.put(
   "/:id",
   authMiddleware.authMiddleware,
@@ -71,3 +72,4 @@ router.delete(
 );
 
 module.exports = router;
+*/
