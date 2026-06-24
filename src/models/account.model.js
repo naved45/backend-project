@@ -1,5 +1,3 @@
-
-/*
 const mongoose = require("mongoose");
 
 const accountSchema = new mongoose.Schema(
@@ -35,6 +33,3 @@ accountSchema.index({ user: 1, status: 1 });
 
 const accountModel = mongoose.model("account", accountSchema);
 module.exports = accountModel;
-
-
-*/
